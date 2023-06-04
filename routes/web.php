@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\ObatController;
+use App\Http\Controllers\TindakanController;
+use App\Http\Controllers\WilayahController;
+use App\Models\Tindakan;
+use App\Models\Wilayah;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +27,10 @@ Route::get('/login',[LoginController::class,'index'])->name('login')->middleware
 Route::post('/login',[LoginController::class,'authenticate']);
 Route::post('/logout',[LoginController::class,'logout']);
 
+Route::resource('/dashboard/wilayah',WilayahController::class);
+// Route::resource('/dashboard/dokter',Dokter::class);
+Route::resource('/dashboard/tindakan',TindakanController::class);
+Route::resource('/dashboard/obat',ObatController::class);
 Route::get('/dashboard', function(){
     return view('dashboard.index');
 });

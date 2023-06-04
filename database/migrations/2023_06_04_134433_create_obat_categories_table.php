@@ -15,6 +15,7 @@ class CreateObatCategoriesTable extends Migration
     {
         Schema::create('obat_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }

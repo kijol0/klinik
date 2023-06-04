@@ -14,7 +14,12 @@ class WilayahController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.wilayah.index',[
+            'wilayah'=>Wilayah::all()
+        ]);
+        // [
+        //     "wilayah"=>Wilayah::latest()->paginate(4)
+        // ]);
     }
 
     /**
@@ -24,7 +29,7 @@ class WilayahController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.wilayah.create');
     }
 
     /**
@@ -35,7 +40,14 @@ class WilayahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name'=>'required|max:255',
+        ]);
+        
+        Wilayah::create($validateData);
+        $request->session()->flash('success','data di tambahkan');
+
+        return redirect('/dashboard/wilayah');
     }
 
     /**
@@ -57,7 +69,11 @@ class WilayahController extends Controller
      */
     public function edit(Wilayah $wilayah)
     {
-        //
+        return view('dashboard.wilayah.edit',[
+            'wilayah'=>$wilayah,
+            
+
+        ]);
     }
 
     /**
@@ -69,7 +85,15 @@ class WilayahController extends Controller
      */
     public function update(Request $request, Wilayah $wilayah)
     {
-        //
+        $rules =[
+            'name'=>'required',
+        ];
+        $validateData=$request->validate($rules);
+            Wilayah::where('id',$wilayah->id)
+            ->update($validateData);
+            return redirect('/dashboard/wilayah')->with('success','data di ubah');
+        
+        
     }
 
     /**
@@ -80,6 +104,8 @@ class WilayahController extends Controller
      */
     public function destroy(Wilayah $wilayah)
     {
-        //
+        Wilayah::destroy($wilayah->id);
+        return redirect('/dashboard/wilayah')->with('success','data di hapus');
+    
     }
 }

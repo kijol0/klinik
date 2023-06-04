@@ -15,6 +15,10 @@ class CreatePasiensTable extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('alamat');
+            $table->string('telepon');
+            $table->date('tanggal_lahir');
             $table->timestamps();
         });
     }

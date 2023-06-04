@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Jadwal</h1>
+    <h1 class="h2">Wilayah Specialis</h1>
     
   </div>
 
@@ -13,7 +13,7 @@
       @endif
     
   <div class="table-responsive col-lg-10">
-    <a href="/dashboard/jadwal/create" class="btn btn-primary mb-3">Pesan tempat</a>
+    <a href="/dashboard/wilayah/create" class="btn btn-primary mb-3">Tambah Wilayah</a>
     <table class="table table-striped table-sm">
       <thead>
         <tr>
@@ -24,23 +24,21 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($jadwal as $jadwal)
+        @foreach ($wilayah as $wilayah)
         @csrf
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $jadwal->tanggal }}</td>
-            <td>{{ $jadwal->pemesan->name }}</td>
-            
+            <td>{{ $wilayah->name }}</td>
             
             <td>
-              <form action="/dashboard/jadwal/{{ $jadwal->id }}/edit" class="d-inline">
+              <form action="/dashboard/wilayah/{{ $wilayah->id }}/edit" class="d-inline">
                 @csrf
                 <button class=" bg-warning" ><span>Edit</span></button>
               </form>
-                <form action="/dashboard/jadwal/{{ $jadwal->id }}" method="post" class="d-inline">
+                <form action="/dashboard/wilayah/{{ $wilayah->id }}" method="post" class="d-inline">
                   @method('delete')
                   @csrf
-                  <button class=" bg-danger" onclick="return confirm('Anda yakin menghapus jadwal ini?')"><span data-feather="trash"></span></button>
+                  <button class=" bg-danger" onclick="return confirm('Anda yakin menghapus data ini?')"><span data-feather="trash"></span></button>
                 </form>
                 
                 
