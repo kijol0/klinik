@@ -7,44 +7,66 @@
             Dashboard
           </a>
         </li>
+        
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
             <span data-feather="file"></span>
-             Dokter
+             Data
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
-            <span data-feather="file"></span>
-             pegawai
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
-            <span data-feather="file"></span>
-             Pasien
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
-            <span data-feather="file"></span>
-             Master Data obat
-          </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/rekam*')?'active':'' }}" href="/dashboard/jadwal">
-              <span data-feather="file"></span>
-              Data rekam medis
-            </a>
-          </li>
-          
-          <li class="nav-item">
+          <ul class="nav-item ">
             <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
               <span data-feather="file"></span>
-              transaksi pembayaran
+               Wilayah specialis
             </a>
-          </li>
+          </ul>
+          <ul class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
+              <span data-feather="file"></span>
+               Dokter
+            </a>
+          </ul>
+          <ul class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
+              <span data-feather="file"></span>
+               Pegawai
+            </a>
+          </ul>
+          <ul class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
+              <span data-feather="file"></span>
+               Tindakan
+            </a>
+          </ul>
+          <ul class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
+              <span data-feather="file"></span>
+               Obat
+            </a>
+          </ul>
+        </li>
+        </li>
 
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
+            <span data-feather="file"></span>
+             Pendaftaraan Pasien
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
+            <span data-feather="file"></span>
+             Data rekam medis
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
+            <span data-feather="file"></span>
+             Pembayaran
+          </a>
+        </li>
+        
           <li class="nav-item">
             <a class="nav-link {{ Request::is('dashboard/obat*')?'active':'' }}" href="/dashboard/posts">
               <span data-feather="file"></span>
