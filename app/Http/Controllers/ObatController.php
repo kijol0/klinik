@@ -14,7 +14,7 @@ class ObatController extends Controller
      */
     public function index()
     {
-        return view('dashboard.obats.index',[
+        return view('dashboard.obat.index',[
             'obat'=>Obat::all()
         ]);
     }
@@ -26,7 +26,7 @@ class ObatController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.obat.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name'=>'required|max:255',
+            'harga'=>'required',
+        ]);
+        
+        Obat::create($validateData);
+        $request->session()->flash('success','data di tambahkan');
+
+        return redirect('/dashboard/obat');
     }
 
     /**
@@ -59,7 +67,9 @@ class ObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        //
+        return view('dashboard.obat.edit',[
+            'obat'=>$obat,
+        ]);
     }
 
     /**
@@ -71,7 +81,15 @@ class ObatController extends Controller
      */
     public function update(Request $request, Obat $obat)
     {
-        //
+        $rules =[
+            'name'=>'required',
+            'harga'=>'required',
+        ];
+        $validateData=$request->validate($rules);
+            Obat::where('id',$obat->id)
+            ->update($validateData);
+            return redirect('/dashboard/obat')->with('success','data di ubah');
+        
     }
 
     /**
@@ -82,6 +100,8 @@ class ObatController extends Controller
      */
     public function destroy(Obat $obat)
     {
-        //
+        Obat::destroy($obat->id);
+        return redirect('/dashboard/obat')->with('success','data di hapus');
+    
     }
 }

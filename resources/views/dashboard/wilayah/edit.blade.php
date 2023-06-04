@@ -15,29 +15,12 @@
       <form method="post" action="/dashboard/wilayah/{{ $wilayah->id }}">
         @method('put')
         @csrf
-        <div class="form-floating">
-          <input type="text" name="name"class="form-control rounded-top @error('name')
-          is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
-          <label for="name">Name</label>
-          @error('name')
-          <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-        </div>  
-        {{-- <div class="mb-3">
-            <label for="lapangan" class="form-label">Lapangan</label>
-            <select class="form-select" name="lapangan_id">
-                @foreach($lapangans as $lapangan)
-                @if(old('lapangan_id',$jadwal->lapangan_id)==$lapangan->id)
-                <option value="{{ $lapangan->id }}" selected> {{$lapangan->name}}</option>
-                @else 
-                <option value="{{ $lapangan->id }}"> {{$lapangan->name}}</option>
-                @endif
-                @endforeach
-              </select>
-            
-          </div> --}}
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama wilayah</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="{{ $wilayah->name }}">
+          
+        </div>
+  
 
           
         
