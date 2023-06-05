@@ -17,12 +17,12 @@
         @csrf
         <div class="mb-3">
           <label for="name" class="form-label">Nama obat</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="{{ $obat->harga }}>
+          <input type="text" class="form-control" id="name" name="name" placeholder="{{ $obat->harga }}">
           
         </div>
         <div class="mb-3">
             <label for="harga" class="form-label">harga</label>
-            <input type="text" class="form-control" id="harga" name="harga" placeholder="{{ $obat->harga }}>
+            <input type="text" class="form-control" id="harga" name="harga" placeholder="{{ $obat->harga }}">
                     
           </div> 
  

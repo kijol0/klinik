@@ -14,7 +14,9 @@ class PasienController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.pendaftaran.index',[
+            'pasien'=>Pasien::all()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class PasienController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.pendaftaran.create');
     }
 
     /**
@@ -35,7 +37,17 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name'=>'required|max:255',
+            'alamat'=>'required|max:255',
+            'telepon'=>'required',
+            'tanggal_lahir',
+        ]);
+        
+        Pasien::create($validateData);
+        $request->session()->flash('success','data di tambahkan');
+
+        return redirect('/dashboard/pendaftaran');
     }
 
     /**
@@ -57,7 +69,9 @@ class PasienController extends Controller
      */
     public function edit(Pasien $pasien)
     {
-        //
+        return view('dashboard.pendaftaran.edit',[
+            'pasien'=>$pasien,
+        ]);
     }
 
     /**
@@ -69,7 +83,17 @@ class PasienController extends Controller
      */
     public function update(Request $request, Pasien $pasien)
     {
-        //
+        $rules =[
+            'name'=>'required|max:255',
+            'alamat'=>'required|max:255',
+            'telepon'=>'required',
+            'tanggal_lahir',
+        ];
+        $validateData=$request->validate($rules);
+            Pasien::where('id',$pasien->id)
+            ->update($validateData);
+            return redirect('/dashboard/pendaftaran')->with('success','data pasien di ubah');
+        
     }
 
     /**
@@ -80,6 +104,8 @@ class PasienController extends Controller
      */
     public function destroy(Pasien $pasien)
     {
-        //
+        Pasien::destroy($pasien->id);
+        return redirect('/dashboard/Pendaftaran')->with('success','data di hapus');
+    
     }
 }
