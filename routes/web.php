@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\PasienController;
 use App\Http\Controllers\TindakanController;
 use App\Http\Controllers\WilayahController;
 use App\Models\Tindakan;
@@ -31,6 +32,7 @@ Route::resource('/dashboard/wilayah',WilayahController::class);
 // Route::resource('/dashboard/dokter',Dokter::class);
 Route::resource('/dashboard/tindakan',TindakanController::class);
 Route::resource('/dashboard/obat',ObatController::class);
+Route::resource('/dashboard/pendaftaran',PasienController::class);
 Route::get('/dashboard', function(){
     return view('dashboard.index');
 });

@@ -10,31 +10,6 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   @endif
-
-  {{-- <div class="col-lg-8">
-      <form method="post" action="/dashboard/obat">
-        @csrf
-        <div class="form-floating">
-          <input type="text" name="name"class="form-control rounded-top @error('name')
-          is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
-          <label for="name">Name</label>
-          @error('name')
-          <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-        </div>
-        <div class="form-floating">
-          <input type="text" name="harga"class="form-control rounded-top @error('harga')
-          is-invalid @enderror" id="harga" placeholder="Harga" required value="{{ old('harga') }}">
-          <label for="name">Harga</label>
-          @error('harga')
-          <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-        </div>     --}}
-        
           <div class="col-lg-8">
               <form method="post" action="/dashboard/obat">
                 @csrf

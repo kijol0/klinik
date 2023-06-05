@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($obat as $obat)
+        @foreach($obat as $obat)
         @csrf
         <tr>
             <td>{{ $loop->iteration }}</td>

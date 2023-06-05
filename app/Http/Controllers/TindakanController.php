@@ -14,7 +14,9 @@ class TindakanController extends Controller
      */
     public function index()
     {
-        return view('dashboard.tindakan.index',);
+        return view('dashboard.tindakan.index',[
+            'tindakan'=>Tindakan::all()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class TindakanController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.tindakan.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class TindakanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name'=>'required|max:255',
+            'harga'=>'required',
+        ]);
+        
+        Tindakan::create($validateData);
+        $request->session()->flash('success','data di tambahkan');
+
+        return redirect('/dashboard/tindakan');
     }
 
     /**
@@ -57,7 +67,9 @@ class TindakanController extends Controller
      */
     public function edit(Tindakan $tindakan)
     {
-        //
+        return view('dashboard.tindakan.edit',[
+            'tindakan'=>$tindakan,
+        ]);
     }
 
     /**
@@ -69,7 +81,15 @@ class TindakanController extends Controller
      */
     public function update(Request $request, Tindakan $tindakan)
     {
-        //
+        $rules =[
+            'name'=>'required',
+            'harga'=>'required',
+        ];
+        $validateData=$request->validate($rules);
+            Tindakan::where('id',$tindakan->id)
+            ->update($validateData);
+            return redirect('/dashboard/tindakan')->with('success','data di ubah');
+        
     }
 
     /**
@@ -80,6 +100,8 @@ class TindakanController extends Controller
      */
     public function destroy(Tindakan $tindakan)
     {
-        //
+        Tindakan::destroy($tindakan->id);
+        return redirect('/dashboard/tindakan')->with('success','data di hapus');
+    
     }
 }
